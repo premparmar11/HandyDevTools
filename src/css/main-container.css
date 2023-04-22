@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.textarea {
+    flex: 2;
+    margin: 1%;
+    resize: none;
+}
+
+.middleArea {
+    flex: 0.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Main Axis */
+    justify-content: center; /* Cross Axis */
+}
