@@ -7,7 +7,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <>
-    <h2>DevHandyTools</h2>
+    <div style={{textAlign : "center"}}>
+      <h2>DevHandyTools</h2>
+    </div>
     <ButtonConatiner />
   </>
 );

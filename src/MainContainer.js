@@ -1,6 +1,6 @@
 import {React, useEffect, useState} from "react";
 import '../src/css/main-container.css'
-import { removeDuplicates } from "./constants/buttons";
+import { removeDuplicates, subtractList, removeLineNumbers } from "./constants/buttons";
 
 export const MainContainer = (props) => {
 
@@ -21,8 +21,10 @@ export const MainContainer = (props) => {
         console.log("Process button")
         if (action === 'Remove Duplicates') {
             setOutputText(removeDuplicates(inputText, '\n'));
+        } else if (action === 'Subtract List') {
+            setInputText(subtractList(inputText, outputText, '\n'));
         } else if (action === 'Remove LineNumbers') {
-            setOutputText()
+            setOutputText(removeLineNumbers(inputText, '\n'));
         }
     }
 
@@ -36,13 +38,13 @@ export const MainContainer = (props) => {
 
     return (
         <div className="container">
-        <textarea className="textarea" onChange={inputTextHandler} value={inputText} placeholder="Input here..."></textarea>
+        <textarea className="textarea" onChange={inputTextHandler} value={inputText} placeholder={action !== 'Subtract List'? "Input here..." : "List A (After Process, Result will be shown here as List A - List B)"}></textarea>
             <div className="middleArea">
                 <button onClick={() => setInputText('')} >Reset Input</button>
                 <button onClick={onProcessButton}>Process</button>
                 <button onClick={() => setOutputText('')}>Reset Output</button>
             </div>
-        <textarea className="textarea" onChange={outputTextHandler} value={outputText} placeholder="output"></textarea>
+        <textarea className="textarea" onChange={outputTextHandler} value={outputText} placeholder={action !== 'Subtract List'? "Output" : "List B"}></textarea>
         </div>
     );
 }
